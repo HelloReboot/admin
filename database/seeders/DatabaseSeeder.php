@@ -18,8 +18,15 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'),
+            'permissions' => [
+                "platform.index" => true,
+                "platform.systems.roles" => true,
+                "platform.systems.users" => true,
+                "platform.systems.attachment" => true
+            ]
         ]);
         GamePlayerFactory::times(10)->create();
     }
